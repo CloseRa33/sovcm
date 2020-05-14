@@ -1,0 +1,51 @@
+version: '3'
+services:
+  sovcom-eureka-server:
+    container_name: SovcomEurekaServer
+    build: ./SovcomEurekaServer
+    ports: 
+      - "8084:8084"
+  sovcom-email-service:
+    container_name: SovcomEmailService
+    build: ./SovcomEmailService
+    ports: 
+      - "8081:8081"
+    depends_on:
+      - sovcom-eureka-server
+      - sovcom-cloud-gateway
+    volumes:
+      - ./SovcomEmailService/entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+  sovcom-push-service:
+    container_name: SovcomPushService
+    build: ./SovcomPushService
+    ports: 
+      - "8082:8082"
+    depends_on:
+      - sovcom-eureka-server
+      - sovcom-cloud-gateway
+    volumes:
+      - ./SovcomPushService/entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+  sovcom-sms-service:
+    container_name: SovcomSmsService
+    build: ./SovcomSmsService
+    ports: 
+      - "8083:8083"
+    depends_on:
+      - sovcom-eureka-server
+      - sovcom-cloud-gateway
+    volumes:
+      - ./SovcomSmsService/entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+  sovcom-cloud-gateway:
+    container_name: SovcomCloudGateway
+    build: ./SovcomCloudGateway
+    ports: 
+      - "8080:8080"
+    depends_on:
+      - sovcom-eureka-server
+    volumes:
+      - ./SovcomCloudGateway/entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+      

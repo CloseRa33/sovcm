@@ -6,4 +6,4 @@ server:
 eureka:
  client:
   serviceUrl:
-   defaultZone: http://localhost:8084/eureka
+   defaultZone: http://sovcom-eureka-server:8084/eureka
