@@ -23,6 +23,7 @@
         <module>SovcomEurekaServer</module>
         <module>SovcomPushService</module>
         <module>SovcomSmsService</module>
+        <module>notification-api</module>
     </modules>
 
 </project>

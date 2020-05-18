@@ -6,7 +6,13 @@
        GATEWAY-SERVICE	
        PUSH-SERVICE	
        SMS-SERVICE
-4. По адресу localhost:8080 находится Spring Cloud Gateway, через который мы и будем слать уведомления:
-       Для отправки уведомлений на email используем uri: localhost:8080/email/notification
-       Для отпрвки уведомлений через sms: localhost:8080/sms/notification
-       Для отпрвки push уведомлений: localhost:8080/push/notification
+4. По адресу localhost:8080 находится Spring Cloud Gateway, через который мы и будем слать уведомления. 
+#Для отправки уведомлений используем POST запрос:
+
+   {
+     sendTo: "Получатель"
+   }
+
+#Для отправки уведомлений на email используем uri: localhost:8080/email/notification
+#Для отпрвки уведомлений через sms: localhost:8080/sms/notification
+#Для отпрвки push уведомлений: localhost:8080/push/notification
